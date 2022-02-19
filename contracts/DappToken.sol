@@ -5,6 +5,6 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract DappToken is ERC20 {
     constructor() ERC20("DappToken", "DAPP") {
-        _mint(msg.sender, 1 * (10**(6 + 18)));
+        _mint(msg.sender, 1000000 * (10**18));
     }
 }
