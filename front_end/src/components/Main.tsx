@@ -6,7 +6,7 @@ import brownieConfig from "../brownie-config.json";
 import dappImage from "../assets/images/dapp.png";
 import ethImage from "../assets/images/dapp.png";
 import daiImage from "../assets/images/dapp.png";
-import { YourWallet } from "./yourWallet/YourWallet";
+import { YourWallet } from "./wallet/YourWallet";
 
 export type Token = {
     image: string;
