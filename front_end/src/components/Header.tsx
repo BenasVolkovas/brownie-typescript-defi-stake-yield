@@ -1,21 +1,36 @@
 import { useEthers } from "@usedapp/core";
+import { Button, Box } from "@mui/material";
 
 const Header = () => {
     const { account, activateBrowserWallet, deactivate } = useEthers();
     const isConnected = account !== undefined;
 
     return (
-        <div>
+        <Box
+            sx={{
+                margin: ({ spacing }) => spacing(1),
+                display: "flex",
+                justifyContent: "flex-end",
+            }}
+        >
             {isConnected ? (
-                <button color="primary" onClick={() => deactivate()}>
+                <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={deactivate}
+                >
                     Disconnect
-                </button>
+                </Button>
             ) : (
-                <button color="primary" onClick={() => activateBrowserWallet()}>
+                <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={() => activateBrowserWallet()}
+                >
                     Connect
-                </button>
+                </Button>
             )}
-        </div>
+        </Box>
     );
 };
 
