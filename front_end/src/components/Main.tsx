@@ -4,8 +4,8 @@ import networkMapping from "../chain-info/deployments/map.json";
 import { constants } from "ethers";
 import brownieConfig from "../brownie-config.json";
 import dappImage from "../assets/images/dapp.png";
-import ethImage from "../assets/images/dapp.png";
-import daiImage from "../assets/images/dapp.png";
+import ethImage from "../assets/images/eth.png";
+import daiImage from "../assets/images/dai.png";
 import { YourWallet } from "./wallet/YourWallet";
 
 export type Token = {

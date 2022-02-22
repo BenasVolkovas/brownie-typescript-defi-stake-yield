@@ -1,13 +1,12 @@
 import { Token } from "../Main";
 import { useEthers, useTokenBalance } from "@usedapp/core";
 import { formatUnits } from "@ethersproject/units";
-import { BalanceMsg } from "../BalanceMsg";
-
-export interface WalletBalanceProps {
+import { Button } from "@mui/material";
+export interface StakeFormProps {
     token: Token;
 }
 
-export const WalletBalance = ({ token }: WalletBalanceProps) => {
+export const StakeForm = ({ token }: StakeFormProps) => {
     const { image, address, name } = token;
     const { account } = useEthers();
     const tokenBalance = useTokenBalance(address, account);
@@ -15,10 +14,8 @@ export const WalletBalance = ({ token }: WalletBalanceProps) => {
         ? parseFloat(formatUnits(tokenBalance, 18))
         : 0;
     return (
-        <BalanceMsg
-            label={`Your un-staked ${name} balance`}
-            imgSrc={image}
-            amount={formattedTokenBalance}
-        />
+        <>
+            <Button></Button>
+        </>
     );
 };
