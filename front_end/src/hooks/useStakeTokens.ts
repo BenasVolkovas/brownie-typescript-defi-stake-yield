@@ -22,14 +22,41 @@ export const useStakeTokens = (tokenAddress: string) => {
     const erc20Interface = new utils.Interface(erc20ABI);
     const erc20Contract = new Contract(tokenAddress, erc20Interface);
 
-    const { send: approveErc20Send, state: approveErc20State } =
+    // aprove
+    const { send: approveErc20Send, state: approveAndStakeErc20State } =
         useContractFunction(erc20Contract, "approve", {
             transactionName: "Approve ERC20",
         });
 
-    const approve = (amount: string) => {
+    const approveAndStake = (amount: string) => {
+        setAmountToStake(amount)
         return approveErc20Send(tokenFarmAddress, amount);
     };
 
-    return { approve, approveErc20State };
+    // stake
+    const { send: stakeSend, state: stakeState } =
+        useContractFunction(tokenFarmContract, "stakeTokens", {
+            transactionName: "Stake Tokens",
+        });
+    
+    const [amountToStake, setAmountToStake] = useState("0")
+
+    useEffect(() => {
+        if(approveAndStakeErc20State.status === "Success") {
+            stakeSend(amountToStake, tokenAddress)
+        }
+    }, [approveAndStakeErc20State, amountToStake, tokenAddress])
+
+    const [state, setState] = useState(approveAndStakeErc20State)
+
+
+    useEffect(() => {
+        if (approveAndStakeErc20State.status === "Success") {
+            setState(stakeState)
+        } else {
+            setState(approveAndStakeErc20State)
+        }
+    }, [approveAndStakeErc20State, stakeState])
+
+    return { approveAndStake, state };
 };

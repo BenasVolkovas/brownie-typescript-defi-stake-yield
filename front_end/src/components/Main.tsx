@@ -7,6 +7,7 @@ import dappImage from "../assets/images/dapp.png";
 import ethImage from "../assets/images/eth.png";
 import daiImage from "../assets/images/dai.png";
 import { YourWallet } from "./wallet/YourWallet";
+import { Typography } from "@mui/material";
 
 export type Token = {
     image: string;
@@ -33,5 +34,10 @@ export const Main = () => {
         { image: daiImage, address: fauTokenAddress, name: "DAI" },
     ];
 
-    return <YourWallet supportedTokens={supportedTokens} />;
+    return (
+        <>
+            <Typography variant="h3" sx={{margin: ({spacing}) => spacing(5, 0)}}>Tokens Staking Dapp</Typography>
+            <YourWallet supportedTokens={supportedTokens} />
+        </>
+    )
 };

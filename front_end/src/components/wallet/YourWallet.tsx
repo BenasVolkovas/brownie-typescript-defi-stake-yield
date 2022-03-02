@@ -20,8 +20,8 @@ export const YourWallet = ({ supportedTokens }: YourWalletProps) => {
 
     return (
         <Box>
-            <Typography variant="h4">Your Wallet!</Typography>
-            <Box>
+            <Typography variant="h4" sx={{margin: ({spacing}) => spacing(2, 0)}}>Your Wallet!</Typography>
+            <Box sx={{backgroundColor: "white", borderRadius: "25px"}}>
                 <TabContext value={selectedTokenIndex.toString()}>
                     <TabList
                         onChange={handleTabChange}
@@ -40,8 +40,10 @@ export const YourWallet = ({ supportedTokens }: YourWalletProps) => {
                     {supportedTokens.map((token, index) => {
                         return (
                             <TabPanel value={index.toString()} key={index}>
-                                <WalletBalance token={token} />
-                                <StakeForm token={token} />
+                                <Box sx={{display: "flex", flexDirection: "column", alignItems: "center", gap: ({spacing}) => spacing(4)}}>
+                                    <WalletBalance token={token} />
+                                    <StakeForm token={token} />
+                                </Box>
                             </TabPanel>
                         );
                     })}
