@@ -24,7 +24,7 @@ def deploy_token_farm_and_dapp_token(frontEndUpdate=False):
 
     # Allow DappToken, WethToken, FauToken/Dai
     wethToken = get_contract("weth_token")
-    fauToken = get_contract("fau_token")
+    fauToken = get_contract("dai_token")
     dictOFAllowedTokens = {
         dappToken: get_contract("dai_usd_price_feed"),
         fauToken: get_contract("dai_usd_price_feed"),
@@ -67,4 +67,5 @@ def copy_folders_to_front_end(src, dest):
 
 
 def main():
+    print("Deploying...")
     deploy_token_farm_and_dapp_token(frontEndUpdate=True)

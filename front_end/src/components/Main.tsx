@@ -25,7 +25,7 @@ export const Main = () => {
         ? brownieConfig["networks"][networkName]["weth_token"]
         : constants.AddressZero;
     const fauTokenAddress = chainId
-        ? brownieConfig["networks"][networkName]["fau_token"]
+        ? brownieConfig["networks"][networkName]["dai_token"]
         : constants.AddressZero;
 
     const supportedTokens: Array<Token> = [
@@ -36,8 +36,13 @@ export const Main = () => {
 
     return (
         <>
-            <Typography variant="h3" sx={{margin: ({spacing}) => spacing(5, 0)}}>Tokens Staking Dapp</Typography>
+            <Typography
+                variant="h3"
+                sx={{ margin: ({ spacing }) => spacing(5, 0) }}
+            >
+                Tokens Staking Dapp
+            </Typography>
             <YourWallet supportedTokens={supportedTokens} />
         </>
-    )
+    );
 };
